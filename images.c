@@ -9,8 +9,8 @@
 int main(){
 
 	int input1;
-	double array [rows][columns];
-	double row, column;
+	double array[rows][columns];
+	int row, column;
 	char file_name [100];
 	FILE* readfilepointer;
 	
@@ -56,25 +56,25 @@ int main(){
 		//if(readfilepointer != NULL){
      			//printf("file open succesful");
    		//}
-		
-		
-		
-		
 		//fgets(input2, 100, stdin);
 	
 	
-	else if(input1 == 2){
+	if(input1 == 2){
 	
 	readfilepointer = fopen(file_name, "r");
-	
 	for(row = 0; row != '\0'; row++){
 	for(column = 0; column != '\0'; column++){
-		fscanf(readfilepointer, "%lf", &array[rows][columns]);
-	 	//printf("%.2lf", array[rows][columns]);
+		//fscanf(readfilepointer, "%lf", &array[row][column]);
+	 	// Theres something wrong with our condtions in these for loops because it spams zero when the fscanf condition is //
 	 
 	}
 	}
-	 printf("%.2lf", array[rows][columns]);
+	
+	printf("%.2lf", array[row][column]);
+	
+	
+	
+	 //printf("%.2lf", array[rows][columns]);
 	//read the text file, convert it into integers values, and then store into the array
 //if image is succesffull loaded we need to display image then display main menu again
 // if image is not succsfully loaded we need to say "Sorry, no image to display" then display main menu again 
