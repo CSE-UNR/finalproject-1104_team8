@@ -233,7 +233,7 @@ void loadImage(double array[rows][columns]){
 //Function to display image, when converting you want to read file into a new 2D array
 //Function to display editing menu
 =======
-//Function to display image current image
+//Function to display image current image, have the function loop through the array of values (loaded from the file) and print the new "encoded" veriosns of each character into the array
 >>>>>>> 4af70ec086cb5eb2e8e8da8c9d58752cfbf37387
 
 
