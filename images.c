@@ -37,7 +37,7 @@ int main(){
 	     		for(row = 0; row < rows; row++){
 			for(column = 0; column < columns; column++){
 			fscanf(readfilepointer, "%lf", &array[rows][columns]);	  	
-	     		printf("%.2lf", array[row][column]);
+	     		printf("%.1lf", array[rows][columns]);
 	     		}
 	     		}
 	     	
