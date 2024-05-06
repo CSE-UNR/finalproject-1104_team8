@@ -4,8 +4,8 @@
 
 
 #include <stdio.h>
-#define rows 11
-#define columns 21
+#define rows 3
+#define columns 4
 void displayMainMenu();
 void disp_edit();
 int getInteger();
@@ -113,7 +113,7 @@ void getString(char string[]){
 }
 //Function to load image (make sure to read image into 2D array here)
 void loadImage(double array[rows][columns]){
-	char file_name [100];
+	char file_name [35];
 	int row = 0;
 	int column = 0;
 	FILE* readfilepointer;
@@ -121,14 +121,7 @@ void loadImage(double array[rows][columns]){
 	readfilepointer = fopen(file_name, "r");
 	
 		if(readfilepointer != NULL){
-     		printf("Image successfuly loaded!\n");
-     		
-     		
-     		//for(row = 0; row != '\0'; row++){
-	//for(column = 0; column != '\0'; column++){
-		//fscanf(readfilepointer, "%lf", &array[row][column]);
-     		
-     		
+     		printf("Image successfuly loaded!\n");    		
      		
      		while(fscanf(readfilepointer, "%lf", &array[row][column]) == 1){
      			column++;
