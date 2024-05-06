@@ -35,9 +35,16 @@ int main(){
 	     			
      			readfilepointer = fopen(file_name, "r");
 	     		for(row = 0; row <= rows; row++){
-			for(column = 0; column <= columns; column++){
-			fscanf(readfilepointer, "%c", &array[row][column]);	  	
-	     		printf("%c", array[row][column]);
+			    for(column = 0; column <= columns; column++){
+			    	fscanf(readfilepointer, "%c", &array[row][column]);	  	
+					if(array[row][column] == '3'){
+					
+				
+					}	
+					
+					
+					
+	     			printf("%c", array[row][column]);
 	     //printf("row = %d and column = %d", row, column);
 	     		}
 	     		}
@@ -141,7 +148,7 @@ void loadImage(char array[rows][columns]){
      		fclose(readfilepointer);
 }
 		
-//Function to convert numbers to chars in file 2d array
+
 
 
 
