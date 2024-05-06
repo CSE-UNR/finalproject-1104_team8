@@ -4,12 +4,12 @@
 
 
 #include <stdio.h>
-#define rows 3
-#define columns 4
+#define rows 12
+#define columns 21
 void displayMainMenu();
 void disp_edit();
 int getInteger();
-void loadImage(double array[rows][columns]);
+void loadImage(char array[rows][columns]);
 void getFile(char file_name[]);
 void getString(char string[]);
 
@@ -17,7 +17,7 @@ void getString(char string[]);
 int main(){
 	int input1;
 	int row, column;
-	double array[rows][columns];
+	char array[rows][columns];
 	char file_name [35];
 	FILE* readfilepointer;
 	readfilepointer = fopen(file_name, "r");
@@ -34,13 +34,14 @@ int main(){
 	     			
 	     			
      			readfilepointer = fopen(file_name, "r");
-	     		for(row = 0; row < rows; row++){
-			for(column = 0; column < columns; column++){
-			fscanf(readfilepointer, "%lf", &array[rows][columns]);	  	
-	     		printf("%.0lf\n", array[rows][columns]);
+	     		for(row = 0; row <= rows; row++){
+			for(column = 0; column <= columns; column++){
+			fscanf(readfilepointer, "%c", &array[row][column]);	  	
+	     		printf("%c", array[row][column]);
+	     //printf("row = %d and column = %d", row, column);
 	     		}
 	     		}
-	     	
+	     	printf("\n");
 	
      		
      		}
@@ -112,7 +113,7 @@ void getString(char string[]){
 	scanf("%s", string);
 }
 //Function to load image (make sure to read image into 2D array here)
-void loadImage(double array[rows][columns]){
+void loadImage(char array[rows][columns]){
 	char file_name [35];
 	int row = 0;
 	int column = 0;
@@ -123,7 +124,7 @@ void loadImage(double array[rows][columns]){
 		if(readfilepointer != NULL){
      		printf("Image successfuly loaded!\n");    		
      		
-     		while(fscanf(readfilepointer, "%lf", &array[row][column]) == 1){
+     		while(fscanf(readfilepointer, "%c", &array[row][column]) == 1){
      			column++;
      			if(column == columns){
      			row++;
@@ -140,7 +141,7 @@ void loadImage(double array[rows][columns]){
      		fclose(readfilepointer);
 }
 		
-
+//Function to convert numbers to chars in file 2d array
 
 
 
