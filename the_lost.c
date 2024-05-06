@@ -36,10 +36,6 @@ else if(input == 2){
 //for(row = 0; row != '\0'; row++){
 //for(column = 0; column != '\0'; column++){
 //fscanf(readfilepointer, "%lf", &array[row][column]);
-// Theres something wrong with our condtions in these for loops because it spams zero when the fscanf condition is //
-
-
-//printf("%.2lf", array[row][column]);
 
 
 //printf("%.2lf", array[rows][columns]);
@@ -92,18 +88,18 @@ return input;
 void getFile(char file_name[]){
 printf("What is the name of image file? ");
 getString(file_name);
-//FILE* readfilepointer;
-//getFile(file_name);
-//readfilepointer = fopen(file_name, "r");
-//if(readfilepointer != NULL){
-      // printf("Image successfuly loaded!\n");
-      // }
-      // else{
-      // printf("Could not find an image with that file name.\n");
-      // return;
+FILE* readfilepointer;
+getFile(file_name);
+readfilepointer = fopen(file_name, "r");
+if(readfilepointer != NULL){
+       printf("Image successfuly loaded!\n");
+       }
+       else{
+       printf("Could not find an image with that file name.\n");
+       return;
       }
-      // fclose(readfilepointer);
-//}
+       fclose(readfilepointer);
+}
 
 
 //Function to get string
