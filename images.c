@@ -123,15 +123,15 @@ void loadImage(double array[rows][columns]){
 		if(readfilepointer != NULL){
      		printf("Image successfuly loaded!\n");    		
      		
-     		while(fscanf(readfilepointer, "%lf", &array[row][column]) == 1){
-     			column++;
-     			if(column == columns){
-     			row++;
-     			column = 0;
-     			if(row == rows);
-     				break;
-     				}
-     		}
+     		//while(fscanf(readfilepointer, "%lf", &array[row][column]) == 1){
+     			//column++;
+     			///if(column == columns){
+     			//row++;
+     			//column = 0;
+     			//if(row == rows);
+     			//	break;
+     			//	}
+     		//}
      		}
      		else{
      		printf("Could not find an image with that file name.\n");
