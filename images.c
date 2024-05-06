@@ -4,12 +4,12 @@
 
 
 #include <stdio.h>
-#define rows 12
-#define columns 21
+#define rows 11
+#define columns 20
 void displayMainMenu();
 void disp_edit();
 int getInteger();
-void loadImage(double array[rows][columns]);
+void loadImage(int array[rows][columns]);
 void getFile(char file_name[]);
 void getString(char string[]);
 
@@ -17,7 +17,7 @@ void getString(char string[]);
 int main(){
 	int input1;
 	int row, column;
-	double array[rows][columns];
+	int array[rows][columns];
 	char file_name [35];
 	FILE* readfilepointer;
 	readfilepointer = fopen(file_name, "r");
@@ -36,8 +36,8 @@ int main(){
      			readfilepointer = fopen(file_name, "r");
 	     		for(row = 0; row < rows; row++){
 			for(column = 0; column < columns; column++){
-			fscanf(readfilepointer, "%lf", &array[rows][columns]);	  	
-	     		printf("%.1lf", array[rows][columns]);
+			fscanf(readfilepointer, "%d", &array[rows][columns]);	  	
+	     		printf("%d\n", array[rows][columns]);
 	     		}
 	     		}
 	     	
@@ -112,7 +112,7 @@ void getString(char string[]){
 	scanf("%s", string);
 }
 //Function to load image (make sure to read image into 2D array here)
-void loadImage(double array[rows][columns]){
+void loadImage(int array[rows][columns]){
 	char file_name [100];
 	int row = 0;
 	int column = 0;
@@ -130,7 +130,7 @@ void loadImage(double array[rows][columns]){
      		
      		
      		
-     		while(fscanf(readfilepointer, "%lf", &array[row][column]) == 1){
+     		while(fscanf(readfilepointer, "%d", &array[row][column]) == 1){
      			column++;
      			if(column == columns){
      			row++;
