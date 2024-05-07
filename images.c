@@ -194,35 +194,35 @@ void brightenImage(char array[rows][columns]){
 }
 
 //Function to load image (make sure to read image into 2D array here)
-//void loadImage(char array[rows][columns]){
-	//char file_name [35];
-	//int row = 0;
-	//int column = 0;
-	//FILE* readfilepointer;
-	//getFile(file_name);
-	//readfilepointer = fopen(file_name, "r");
+void loadImage(char array[rows][columns]){
+	char file_name [35];
+	int row = 0;
+	int column = 0;
+	FILE* readfilepointer;
+	getFile(file_name);
+	readfilepointer = fopen(file_name, "r");
 	
-		//if(readfilepointer != NULL){
-     //		printf("Image successfuly loaded!\n");    		
+		if(readfilepointer != NULL){
+     /	printf("Image successfuly loaded!\n");    		
      
 
-     		//while(fscanf(readfilepointer, "%c", &array[row][column]) == 1){
-     	//		column++;
-     	//		if(column == columns){
-     	//		row++;
-     	//		column = 0;
-     	//		if(row == rows);
-     	//			break;
-     	//			}
-     		//}
+     		while(fscanf(readfilepointer, "%c", &array[row][column]) == 1){
+     			column++;
+     			if(column == columns){
+     		row++;
+     			column = 0;
+     		if(row == rows);
+     			break;
+     			}
+     		}
 
-     	//	}
-     	//	else{
-     	//	printf("Could not find an image with that file name.\n");
-     	//	return;
-     	//}
-     //		fclose(readfilepointer);
-//}
+     		}
+     		else{
+     		printf("Could not find an image with that file name.\n");
+     		return;
+     }
+     		fclose(readfilepointer);
+}
 		
 
 
