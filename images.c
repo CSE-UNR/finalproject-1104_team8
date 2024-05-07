@@ -9,10 +9,11 @@
 void displayMainMenu();
 void disp_edit();
 int getInteger();
-void loadImage(char array[rows][columns]);
+//void loadImage(char array[rows][columns]);
 void getFile(char file_name[]);
 void getString(char string[]);
-
+void dimImage(char array[rows][columns]);
+void brightenImage(char array[rows][columns]);
 
 int main(){
 	int input1;
@@ -64,8 +65,36 @@ int main(){
      		else if(input1 == 3){
      			disp_edit();
      			scanf("%d", &input2);
-    	 			
+     				
+     				if(input2 == 1){
+     			}
+     				
+     				else if(input2 == 2){
+    	 		readfilepointer = fopen(file_name, "r");
+	     		for(row = 0; row <= rows; row++){
+			    for(column = 0; column <= columns; column++){
+			    	fscanf(readfilepointer, "%c", &array[row][column]);	  	
+			    	dimImage(array);
+			    	printf("%c", array[row][column]);
      		}
+     				printf("\n");
+     	}
+     }
+     					else if(input2 == 3){
+     				readfilepointer = fopen(file_name, "r");
+	     		for(row = 0; row <= rows; row++){
+			    for(column = 0; column <= columns; column++){
+			    	fscanf(readfilepointer, "%c", &array[row][column]);	  	
+			    		brightenImage(array);
+			    		printf("%c", array[row][column]);
+     		}
+     				printf("\n");
+     	}
+    }
+     					
+     					else if(input2 == 0){
+     				}
+   }
      		else if(input1 == 0){
      			printf("\nGoodBye!\n\n");
      		}
@@ -128,36 +157,72 @@ void getFile(char file_name[]){
 void getString(char string[]){
 	scanf("%s", string);
 }
+//Dim image function!
+void dimImage(char array[rows][columns]){
+    int row, column;
+    for (row = 0; row < rows; row++){
+        for (column = 0; column < columns; column++){
+            if (array[row][column] == '.'){
+                array[row][column] = ' ';  // Dimming brightness by one step
+            } else if (array[row][column] == 'o'){
+                array[row][column] = '.';  // Dimming brightness by one step
+            } else if (array[row][column] == 'O'){
+                array[row][column] = 'o';  // Dimming brightness by one step
+            } else if (array[row][column] == '0'){
+                array[row][column] = 'O';  // Dimming brightness by one step
+            }
+        }
+    }
+}
+
+//Brighten Image Function
+void brightenImage(char array[rows][columns]){
+    int row, column;
+    for (row = 0; row < rows; row++){
+        for (column = 0; column < columns; column++){
+            if (array[row][column] == ' ') {
+                array[row][column] = '.';  //Increase brightness by one step
+            } else if (array[row][column] == '.'){
+                array[row][column] = 'o';  //Increase brightness by one step
+            } else if (array[row][column] == 'o'){
+                array[row][column] = 'O';  //Increase brightness by one step
+            } else if (array[row][column] == 'O'){
+                array[row][column] = '0';  //Increase brightness by one step
+            }
+        }
+    }
+}
+
 //Function to load image (make sure to read image into 2D array here)
-void loadImage(char array[rows][columns]){
-	char file_name [35];
-	int row = 0;
-	int column = 0;
-	FILE* readfilepointer;
-	getFile(file_name);
-	readfilepointer = fopen(file_name, "r");
+//void loadImage(char array[rows][columns]){
+	//char file_name [35];
+	//int row = 0;
+	//int column = 0;
+	//FILE* readfilepointer;
+	//getFile(file_name);
+	//readfilepointer = fopen(file_name, "r");
 	
-		if(readfilepointer != NULL){
-     		printf("Image successfuly loaded!\n");    		
+		//if(readfilepointer != NULL){
+     //		printf("Image successfuly loaded!\n");    		
      
 
-     		while(fscanf(readfilepointer, "%c", &array[row][column]) == 1){
-     			column++;
-     			if(column == columns){
-     			row++;
-     			column = 0;
-     			if(row == rows);
-     				break;
-     				}
-     		}
+     		//while(fscanf(readfilepointer, "%c", &array[row][column]) == 1){
+     	//		column++;
+     	//		if(column == columns){
+     	//		row++;
+     	//		column = 0;
+     	//		if(row == rows);
+     	//			break;
+     	//			}
+     		//}
 
-     		}
-     		else{
-     		printf("Could not find an image with that file name.\n");
-     		return;
-     	}
-     		fclose(readfilepointer);
-}
+     	//	}
+     	//	else{
+     	//	printf("Could not find an image with that file name.\n");
+     	//	return;
+     	//}
+     //		fclose(readfilepointer);
+//}
 		
 
 
