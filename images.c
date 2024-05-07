@@ -4,20 +4,21 @@
 
 
 #include <stdio.h>
-#define rows 3
-#define columns 4
+#define rows 12
+#define columns 21
 void displayMainMenu();
 void disp_edit();
 int getInteger();
-void loadImage(double array[rows][columns]);
+void loadImage(char array[rows][columns]);
 void getFile(char file_name[]);
 void getString(char string[]);
 
 
 int main(){
 	int input1;
+	int input2;
 	int row, column;
-	double array[rows][columns];
+	char array[rows][columns];
 	char file_name [35];
 	FILE* readfilepointer;
 	readfilepointer = fopen(file_name, "r");
@@ -30,24 +31,40 @@ int main(){
      			getFile(file_name);
      		}
      		else if(input1 == 2){
-     			
-	     			
-	     			
-     			readfilepointer = fopen(file_name, "r");
-	     		for(row = 0; row < rows; row++){
-			for(column = 0; column < columns; column++){
-			fscanf(readfilepointer, "%lf", &array[rows][columns]);	  	
-	     		printf("%.0lf\n", array[rows][columns]);
-	     		}
-	     		}
-	     	
-	
+     			     			     		
      		
+     			readfilepointer = fopen(file_name, "r");
+	     		for(row = 0; row <= rows; row++){
+			    for(column = 0; column <= columns; column++){
+			    	fscanf(readfilepointer, "%c", &array[row][column]);	  	
+					
+					if(array[row][column] == '0'){
+						array[row][column] = ' ';
+					}
+					else if(array[row][column] == '1'){
+						array[row][column] = '.';
+					}
+					else if(array[row][column] == '2'){
+						array[row][column] = 'o';
+					}	
+					else if(array[row][column] == '3'){
+						array[row][column] = 'O';
+					}	
+					else if(array[row][column] == '4'){
+						array[row][column] = '0';
+					}	
+					
+	     			printf("%c", array[row][column]);
+	  
+	     		}
+	     		}
+	     	printf("\n");
+
      		}
      		else if(input1 == 3){
      			disp_edit();
+     			scanf("%d", &input2);
     	 			
-     		
      		}
      		else if(input1 == 0){
      			printf("\nGoodBye!\n\n");
@@ -112,7 +129,7 @@ void getString(char string[]){
 	scanf("%s", string);
 }
 //Function to load image (make sure to read image into 2D array here)
-void loadImage(double array[rows][columns]){
+void loadImage(char array[rows][columns]){
 	char file_name [35];
 	int row = 0;
 	int column = 0;
@@ -122,16 +139,18 @@ void loadImage(double array[rows][columns]){
 	
 		if(readfilepointer != NULL){
      		printf("Image successfuly loaded!\n");    		
-     		
-     		//while(fscanf(readfilepointer, "%lf", &array[row][column]) == 1){
-     			//column++;
-     			///if(column == columns){
-     			//row++;
-     			//column = 0;
-     			//if(row == rows);
-     			//	break;
-     			//	}
-     		//}
+     
+
+     		while(fscanf(readfilepointer, "%c", &array[row][column]) == 1){
+     			column++;
+     			if(column == columns){
+     			row++;
+     			column = 0;
+     			if(row == rows);
+     				break;
+     				}
+     		}
+
      		}
      		else{
      		printf("Could not find an image with that file name.\n");
