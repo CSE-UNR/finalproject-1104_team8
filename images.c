@@ -169,7 +169,7 @@ void dimImage(char array[rows][columns]){
             } else if (array[row][column] == 'O'){
                 array[row][column] = 'o';  // Dimming brightness by one step
             } else if (array[row][column] == '0'){
-                array[row][column] = 'O';  // Dimming brightness by one step
+                array[row][column] = 'O';  // Dimming brightness by vone step
             }
         }
     }
@@ -203,7 +203,7 @@ void loadImage(char array[rows][columns]){
 	readfilepointer = fopen(file_name, "r");
 	
 		if(readfilepointer != NULL){
-     /	printf("Image successfuly loaded!\n");    		
+     	printf("Image successfuly loaded!\n");    		
      
 
      		while(fscanf(readfilepointer, "%c", &array[row][column]) == 1){
