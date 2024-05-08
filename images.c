@@ -6,6 +6,7 @@
 #include <stdio.h>
 #define rows 1000
 #define columns 1000
+#define read_filename "stored.txt"
 void displayMainMenu();
 void disp_edit();
 int getInteger();
@@ -14,14 +15,17 @@ void displayImage(char array[][columns], FILE* readfilepointer);
 void dimImage(char array[rows][columns],FILE* readfilepointer);
 void brightenImage(char array[rows][columns], FILE* readfilepointer);
 
+
 int main(){
 	int input1;
 	int input2;
+	int save1;
 	int row, column;
 	char array[rows][columns];
 	char file_name [35];
-	FILE* readfilepointer;
-
+	char new_file[25];
+	FILE* readfilepointer, *writefilepointer;
+        writefilepointer = fopen("stored.txt", "w");
 	do{	
 	displayMainMenu();
 	input1 = getInteger();
@@ -31,8 +35,8 @@ int main(){
 			scanf("%s", file_name);
 			readfilepointer = fopen(file_name, "r");
 	
-	if(readfilepointer != NULL){
-     		printf("\nImage successfuly loaded!\n");
+			if(readfilepointer != NULL){
+     				printf("\nImage successfuly loaded!\n");
      		}
      		else{
      		printf("Could not find an image with that file name.\n");
@@ -40,7 +44,10 @@ int main(){
      	}
      			
      		}
-     		else if(input1 == 2){     		    	
+     		else if(input1 == 2){     
+     			if(readfilepointer == NULL){
+     				printf("\nsorry, no image to display\n");
+     		}		    	
      			displayImage(array, readfilepointer);
     		     			     		
      		}
@@ -52,21 +59,34 @@ int main(){
      			
      			    			
      			}
-     			else if(input2 == 2){
-    	 		
-	     		dimImage(array, readfilepointer);  
-	     		  
-	     		  
+     			else if(input2 == 2){   	       
+     	  		  
+     	  		  dimImage(array,readfilepointer);
+     	  		  
+     	  		  printf("Would you like to save the file? (y=1 or n=0) ");
+     	  		  scanf("%d", &save1);
+     	  
+     	  		  if(save1 == 1){
+     	   		  printf("\nWhat do you want to name the image file? (include the extension) ");
+     	   		  scanf("%s",new_file);
+     	   		  //fprintf(writefilepointer, "%d", array);
+     	   		  
+     	   		  
+     	   		  printf("\nImage successfully saved!\n");
+     	   		  
+     	  		  
+     	  		  
+     	  		  }
+     	  		  
+     	  		  		
      			}
-     			else if(input2 == 3){
-	     		 
-	     		brightenImage(array, readfilepointer);
-	     		 
-	     		 
-     			}
-     					
+     			else if(input2 == 3){	     		 
+	     		  brightenImage(array,readfilepointer);	     		 	     		 
+     			}		
      			else if(input2 == 0){
      			}
+     			
+     			
                 }
      		else if(input1 == 0){
      			printf("\nGoodBye!\n\n");
@@ -212,45 +232,8 @@ void brightenImage(char array[][columns], FILE* readfilepointer){
 			}		 	
 	     	  }
 	     	}
-  
-  
-  
-
 return;
 }
-//Function to load image (make sure to read image into 2D array here)
-//void loadImage(char array[rows][columns]){
-	//char file_name [35];
-	//int row = 0;
-	//int column = 0;
-	//FILE* readfilepointer;
-	//getFile(file_name);
-	//readfilepointer = fopen(file_name, "r");
-	
-		//if(readfilepointer != NULL){
-     //		printf("Image successfuly loaded!\n");    		
-     
-
-     		//while(fscanf(readfilepointer, "%c", &array[row][column]) == 1){
-     	//		column++;
-     	//		if(column == columns){
-     	//		row++;
-     	//		column = 0;
-     	//		if(row == rows);
-     	//			break;
-     	//			}
-     		//}
-
-     	//	}
-     	//	else{
-     	//	printf("Could not find an image with that file name.\n");
-     	//	return;
-     	//}
-     //		fclose(readfilepointer);
-//}
-		
-
-
-
+//Function save file
 
   
