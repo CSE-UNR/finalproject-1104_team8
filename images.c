@@ -128,47 +128,6 @@ int getInteger(){
 	scanf("%d", &input1);
 	return input1;
 }
-<<<<<<< HEAD
-//Functtion to get file
-void getFile(char file_name[]){
-	printf("What is the name of image file? ");
-	//getString(file_name);
-	scanf("%s", file_name);
-	FILE* readfilepointer;
-	//getFile(file_name);
-	readfilepointer = fopen(file_name, "r");
-	if(readfilepointer != NULL){
-     		printf("\nImage successfuly loaded!\n");
-     		}
-     		else{
-     		printf("Could not find an image with that file name.\n");
-     		return;
-     	}
-     		fclose(readfilepointer);
-}
-//Function to get string 
-void getString(char string[]){
-	scanf("%s", string);
-}
-//Dim image function!
-void dimImage(char array[rows][columns]){
-    int row, column;
-    for (row = 0; row < rows; row++){
-        for (column = 0; column < columns; column++){
-            if (array[row][column] == '.'){
-                array[row][column] = ' ';  // Dimming brightness by one step
-            } else if (array[row][column] == 'o'){
-                array[row][column] = '.';  // Dimming brightness by one step
-            } else if (array[row][column] == 'O'){
-                array[row][column] = 'o';  // Dimming brightness by one step
-            } else if (array[row][column] == '0'){
-                array[row][column] = 'O';  // Dimming brightness by vone step
-            }
-        }
-    }
-}
-=======
->>>>>>> 0096cd3f8ff6b0c9991eb8753f25a3174504a2ab
 
 //Function to display image
 void displayImage(char array[][columns], FILE* readfilepointer){
@@ -275,43 +234,7 @@ void brightenImage(char array[][columns], FILE* readfilepointer){
 	     	}
 return;
 }
-<<<<<<< HEAD
-//Function save file
-=======
-//Function to load image (make sure to read image into 2D array here)
-void loadImage(char array[rows][columns]){
-	char file_name [35];
-	int row = 0;
-	int column = 0;
-	FILE* readfilepointer;
-	getFile(file_name);
-	readfilepointer = fopen(file_name, "r");
-	
-		if(readfilepointer != NULL){
-     	printf("Image successfuly loaded!\n");    		
-     
-
-     		while(fscanf(readfilepointer, "%c", &array[row][column]) == 1){
-     			column++;
-     			if(column == columns){
-     		row++;
-     			column = 0;
-     		if(row == rows);
-     			break;
-     			}
-     		}
-
-     		}
-     		else{
-     		printf("Could not find an image with that file name.\n");
-     		return;
-     }
-     		fclose(readfilepointer);
-}
-		
 
 
-
->>>>>>> a7414a094d85985e8651343ceb7f620ab0407ebf
 
   
